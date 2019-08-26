@@ -26,7 +26,7 @@ namespace TestCalc
         [Theory]
         [InlineData("//;\n", new string[] { ";" })]
         [InlineData("//[***]\n", new string[] { "***" })]
-        [InlineData("//[??][rr][--]\n", new string[] { "??", "rr", "--"})]
+        [InlineData("//[??][rr][--]\n", new string[] { "??", "rr", "--" })]
         public void TestParseHeader(string input, string[] expectedDelimiters)
         {
             string[] actualDelimiters = header.Parse(input);

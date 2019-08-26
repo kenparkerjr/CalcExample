@@ -15,7 +15,7 @@ namespace Calc
         public IEnumerable<long> Parse(string s)
         {
             var parseOptions = ParseOptions.Default;
-            return Parse(s);
+            return Parse(s, parseOptions);
         }
         public IEnumerable<long> Parse(string s, IParseOptions parseOptions)
         {

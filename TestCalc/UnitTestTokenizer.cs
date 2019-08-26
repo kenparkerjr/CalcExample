@@ -21,7 +21,7 @@ namespace TestCalc
         [InlineData("1,2,3")]
         public void TestMaximumNumber(string s)
         {
-            var exception = Record.Exception(()=> tokenizer.Parse(s, ParseOptions.Create(maximumNumbers: 2)));
+            var exception = Record.Exception(() => tokenizer.Parse(s, ParseOptions.Create(maximumNumbers: 2)));
             Assert.IsType<MaximumNumberExeption>(exception);
         }
         [Theory]
@@ -46,7 +46,7 @@ namespace TestCalc
             Assert.Equal(tokens, expected);
         }
         [Theory]
-        [InlineData("1,-100,100", new long[] {-100})]
+        [InlineData("1,-100,100", new long[] { -100 })]
         public void TestShouldDenyNegativeNumbers(string s, long[] expectedErrors)
         {
             var exception = Record.Exception(() => tokenizer.Parse(s, ParseOptions.Create(shouldDenyNegativeNumbers: true)));
@@ -54,7 +54,7 @@ namespace TestCalc
             Assert.Equal(expectedErrors, ((NegativeNumbersException)exception).NegativeNumbers);
         }
         [Theory]
-        [InlineData("2,1001,6", new long[] { 2,0,6 })]
+        [InlineData("2,1001,6", new long[] { 2, 0, 6 })]
         public void TestShouldIgnoreLargeNumbers(string s, long[] expected)
         {
             var tokens = tokenizer.Parse(s, ParseOptions.Create(upperBound: 1000));
@@ -68,7 +68,7 @@ namespace TestCalc
             Assert.Equal(tokens, expected);
         }
         [Theory]
-        [InlineData("//[***]\n11***22***33", new long[] { 11,22,33})]
+        [InlineData("//[***]\n11***22***33", new long[] { 11, 22, 33 })]
         [InlineData("//[*][!!][rrr]\n11rrr22*33!!44", new long[] { 11, 22, 33, 44 })]
         public void SupportMultipleCharacterDelimiter(string s, long[] expected)
         {

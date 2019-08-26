@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Calc.Parsing
 {
@@ -23,7 +24,7 @@ namespace Calc.Parsing
             if (s.TrimStart().StartsWith(HeaderStart))
             {
                 int idx = s.IndexOf(HeaderEnd)-2;
-                if (idx == -1) throw new Exception("Header missing end line");
+                if (idx == -1) throw new Exceptions.InvalidHeaderException();
 
                 return s.Substring(HeaderStart.Length, idx);
             }
@@ -42,7 +43,12 @@ namespace Calc.Parsing
                 return new string[] { s[0].ToString() };
             else
             {
-                throw new NotImplementedException("Multi-Char Strings Not Impliminted");
+                var delimiterList = new List<string>();
+                var matches = Regex.Matches(headerString, @"(?<=\[).+?(?=\])");
+                foreach(var m in matches)   
+                    delimiterList.Add(m.ToString());
+
+                return delimiterList.ToArray();
             }
         }
     }
