@@ -11,8 +11,8 @@ namespace TestCalc
         private CalcService CreateCalc()
         {
             var mockMath = new Moq.Mock<IMath>();
-            mockMath.Setup(x => x.AddNumbers(new long[] { })).Returns(0);
-            mockMath.Setup(x => x.AddNumbers(new long[] { 2, 2, 2 })).Returns(6);
+            mockMath.Setup(x => x.Add(new long[] { })).Returns(0);
+            mockMath.Setup(x => x.Add(new long[] { 2, 2, 2 })).Returns(6);
         
             var mockTokenizer = new Moq.Mock<ITokenizer>();
             mockTokenizer.Setup(x => x.Parse("")).Returns(new long[] { });

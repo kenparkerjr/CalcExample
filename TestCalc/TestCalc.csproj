@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Calc\Calc.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TestObjects\" />
-  </ItemGroup>
-
 </Project>

@@ -20,7 +20,7 @@ namespace Calc
         public ExpressionResult RunExpression(string expression)
         {
             var values = tokenizer.Parse(expression);
-            long result = math.AddNumbers(values.ToArray());
+            long result = math.Add(values.ToArray());
             return new ExpressionResult(result, values.ToArray());
         }
     }

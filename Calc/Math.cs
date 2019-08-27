@@ -10,10 +10,22 @@ namespace Calc
     public class Math : IMath
     {
         private readonly IMathOptions options;
+        private readonly IMathCommand addCommand;
+        private readonly IMathCommand subtractCommand;
+        private readonly IMathCommand multiplyCommand;
+        private readonly IMathCommand divideCommand;
         public IMathOptions Options { get => options; }
-        public Math(IMathOptions options)
+        public Math(IMathOptions options) : this(options, new AddCommand(options), new SubtractCommand(options), new MultiplyCommand(options), new DivideCommand(options))
         {
             this.options = options;
+        }
+        public Math(IMathOptions options, IMathCommand addCommand, IMathCommand subtractCommand, IMathCommand multiplyCommand, IMathCommand divideCommand)
+        {
+            this.options = options;
+            this.addCommand = addCommand;
+            this.subtractCommand = subtractCommand;
+            this.multiplyCommand = multiplyCommand;
+            this.divideCommand = divideCommand;
         }
         public Math()
         {
@@ -31,20 +43,29 @@ namespace Calc
             }
         }
 
-        public long AddNumbers(long[] values)
+        public long Add(long[] values)
         {
             ValidateNumbers(values);
-            long total = 0;
-            foreach (long n in values)
-            {
-                if (n > options.LargestNumber)
-                    continue;
-                if (options.ShouldDenyNegative && n < 0)
-                    continue;
-                total += n;
-            }
+            return addCommand.Execute(values);
 
-            return total;
+        }
+
+        public long Subtract(long[] values)
+        {
+            ValidateNumbers(values);
+            return subtractCommand.Execute(values);
+        }
+
+        public long Multiply(long[] values)
+        {
+            ValidateNumbers(values);
+            return multiplyCommand.Execute(values);
+        }
+
+        public long Divide(long[] values)
+        {
+            ValidateNumbers(values);
+            return divideCommand.Execute(values);
         }
     }
 }
