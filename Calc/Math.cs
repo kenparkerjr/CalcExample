@@ -27,9 +27,9 @@ namespace Calc
             this.multiplyCommand = multiplyCommand;
             this.divideCommand = divideCommand;
         }
-        public Math()
+        public Math() : this(new MathOptions())
         {
-            this.options = new MathOptions();
+ 
         }
         public void ValidateNumbers(long[] values)
         {
