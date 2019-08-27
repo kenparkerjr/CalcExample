@@ -17,10 +17,10 @@ namespace CalcCLI
             this.attributeHelper = new AttributeHelper(Assembly.GetCallingAssembly());
             this.argumentAttributes = GetAllArguments();
         }
-        public ArgumentReader(IAttributeHelper attributeHelper)
+        public ArgumentReader(IAttributeHelper attributeHelper, IEnumerable<CLIArgument> allArguments)
         {
             this.attributeHelper = attributeHelper;
-            this.argumentAttributes = GetAllArguments();
+            this.argumentAttributes = allArguments;
         }
         
         public IEnumerable<CLIArgument> GetAllArguments()
