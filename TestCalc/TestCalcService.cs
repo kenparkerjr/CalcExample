@@ -25,7 +25,7 @@ namespace TestCalc
         public void TestAddNumbers(string expression, long expectedResult)
         {
             var calc = CreateCalc();
-            long actualResult = calc.RunExpression(expression);
+            long actualResult = calc.RunExpression(expression).Result;
             Assert.Equal(expectedResult, actualResult);
         }
         [Theory]
@@ -34,7 +34,7 @@ namespace TestCalc
         public void TestSubtractNumbers(string expression, long expectedResult)
         {
             var calc = CreateCalc();
-            long actualResult = calc.RunExpression(expression);
+            long actualResult = calc.RunExpression(expression).Result;
             Assert.Equal(expectedResult, actualResult);
         }
         [Theory]
@@ -43,7 +43,7 @@ namespace TestCalc
         public void TestMultiplyNumbers(string expression, long expectedResult)
         {
             var calc = CreateCalc();
-            long actualResult = calc.RunExpression(expression);
+            long actualResult = calc.RunExpression(expression).Result;
             Assert.Equal(expectedResult, actualResult);
         }
         [Theory]
@@ -52,7 +52,7 @@ namespace TestCalc
         public void TestDivideNumbers(string expression, long expectedResult)
         {
             var calc = CreateCalc();
-            long actualResult = calc.RunExpression(expression);
+            long actualResult = calc.RunExpression(expression).Result;
             Assert.Equal(expectedResult, actualResult);
         }
     }

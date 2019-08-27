@@ -17,10 +17,11 @@ namespace Calc
             this.math = math;
             this.tokenizer = tokenizer;
         }
-        public long RunExpression(string expression)
+        public ExpressionResult RunExpression(string expression)
         {
             var values = tokenizer.Parse(expression);
-            return math.AddNumbers(values.ToArray());
+            long result = math.AddNumbers(values.ToArray());
+            return new ExpressionResult(result, values.ToArray());
         }
     }
 }

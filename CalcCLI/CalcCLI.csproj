@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Calc\Calc.csproj" />
     <ProjectReference Include="..\CLI\CLI.csproj" />
   </ItemGroup>
 

@@ -10,9 +10,11 @@ namespace CalcCLI
         public int MaximumNumbers { get; set; }
 
         [CLIArgument("largestnumber", "{n} Sets the largest number allowed in the input.")]
-        public int largestnumber { get; set; }
+        public int LargestNumber { get; set; }
 
         [CLIArgument("denynegative", "{Y | N } If Y negative numbers will produce an error.")]
         public bool ShouldDenyNegativeNumbers { get; set; }
+        [CLIArgument("add", "{expression} The given expression will be added")]
+        public string AddExpression { get; set; }
     }
 }

@@ -2,7 +2,7 @@
   "profiles": {
     "CalcCLI": {
       "commandName": "Project",
-      "commandLineArgs": "/maxnumbers 2 /denynegative Y /largestnumber 5000"
+      "commandLineArgs": "/maxnumbers 200 /denynegative Y /largestnumber 5000"
     }
   }
 }
