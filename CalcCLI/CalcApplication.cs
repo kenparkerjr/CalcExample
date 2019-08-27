@@ -40,6 +40,10 @@ namespace CalcCLI
 
             var result = calcService.RunExpression(mathExpression.Op, mathExpression.Expression);
 
+            WriteResult(mathExpression, result);
+        }
+        public void WriteResult(MathExpressionResult mathExpression, ExpressionResult result)
+        {
             Console.WriteLine("Expression: {0}", mathExpression.Expression);
             Console.WriteLine("Results:");
 
