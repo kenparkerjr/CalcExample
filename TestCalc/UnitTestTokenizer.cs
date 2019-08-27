@@ -16,7 +16,7 @@ namespace TestCalc
         [InlineData("3,3", new long[] { 3, 3 })]
         public void TestSupportsTwoNumbers(string s, long[] expected)
         {
-            var tokens = tokenizer.Parse(s, ParseOptions.Create(maximumNumbers:2));
+            var tokens = tokenizer.Parse(s);
             Assert.Equal(tokens, expected);
         }
 

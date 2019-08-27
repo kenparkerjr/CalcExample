@@ -15,9 +15,9 @@ namespace TestCalc
             header = new Header();
         }
         [Theory]
-        [InlineData("//;\n", ";")]
-        [InlineData("//[***]\n", "[***]")]
-        [InlineData("//[??][rr][--]\n", "[??][rr][--]")]
+        [InlineData("//;\n123,123123123,", "//;\n")]
+        [InlineData("//[***]\nasdfasdfasdfasdf", "//[***]\n")]
+        [InlineData("//[??][rr][--]\n1123123,\n\n123234234//", "//[??][rr][--]\n")]
         public void TestExtractHeader(string input, string expectedHeaderString)
         {
             string actualHeaderString = header.ExtractHeader(input);
