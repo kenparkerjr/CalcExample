@@ -9,20 +9,31 @@ namespace Calc
     public class Tokenizer
     {
         public IHeader Header { get; private set; }
-        public Tokenizer()
+
+        public Tokenizer() : this((input, delim) => input.Split(delim, StringSplitOptions.None).ToArray())
+        {
+            
+        }
+
+        public Tokenizer(Func<string, string[], string[]> splitFunction)
         {
             Header = new Header();
             DefaultDelimiters = new string[] { ",", "\n" };
+            Split = splitFunction;
+     
         }
 
         public string[] DefaultDelimiters { get; private set;}
-
-        public IEnumerable<long> Parse(string s)
+        public Func<string, string[], string[]> Split { get; private set; }
+        private string[] GetDelimiters(string s)
         {
             var delimiters = Header.Parse(s);
-            string valueString = s.Substring(Header.GetHeaderLength(s));
-            string[] seperator = delimiters.Concat<string>(DefaultDelimiters).ToArray();
-            var tokens = valueString.Split(seperator, StringSplitOptions.None);
+            return delimiters.Concat<string>(DefaultDelimiters).ToArray();
+        }
+        public IEnumerable<long> Parse(string s)
+        {           
+            string valueString = s.Substring(Header.GetHeaderLength(s));          
+            var tokens = Split(valueString, GetDelimiters(s));
             foreach(string t in tokens)
             {
                 if (long.TryParse(t, out long n))
