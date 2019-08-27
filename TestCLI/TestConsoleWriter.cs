@@ -36,11 +36,14 @@ namespace TestCLI
             var mockReader = new Moq.Mock<IArgumentReader>();
             var fakeArguments = new List<CLIArgument>();
             fakeArguments.Add(new CLIArgument("Command1", "Test1"));
+            fakeArguments.Add(new CLIArgument("Command2", "Test2"));
             mockReader.Setup(x => x.GetAllArguments()).Returns(() => fakeArguments);
             writer.WriteAllArguments(mockReader.Object);
 
             Assert.Contains("Command1", sb.ToString());
             Assert.Contains("Test1", sb.ToString());
+            Assert.Contains("Command2", sb.ToString());
+            Assert.Contains("Test2", sb.ToString());
         }
     }
 }

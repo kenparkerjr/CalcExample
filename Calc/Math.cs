@@ -7,7 +7,7 @@ using Calc.Exceptions;
 
 namespace Calc
 {
-    public class Math
+    public class Math : IMath
     {
         private readonly IMathOptions options;
         public IMathOptions Options { get => options; }
