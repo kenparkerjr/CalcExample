@@ -23,7 +23,6 @@ namespace TestCalc
         public void TestShouldDenyNegativeNumbers(string s, long[] numbers, long[] expectedErrors)
         {
             var math = new Calc.Math(MockOptions(shouldDenyNegative: true));
-
             var exception = Record.Exception(() => math.AddNumbers(numbers));
             Assert.IsType<NegativeNumbersException>(exception);
             Assert.Equal(expectedErrors, ((NegativeNumbersException)exception).NegativeNumbers);
@@ -33,7 +32,6 @@ namespace TestCalc
         public void TestValidateShouldIgnoreLargeNumbers(int largestNumber, long[] numbers, long expectedResult)
         {        
             var math = new Calc.Math(MockOptions(largestNumber: largestNumber));
-
             var actualResult = math.AddNumbers(numbers);
             Assert.Equal(expectedResult, actualResult);
         }
@@ -44,7 +42,6 @@ namespace TestCalc
         public void TestValidateMaximumNumberThrowsException(int? maximumNumbers, long[] numbers)
         {
             var math = new Calc.Math(MockOptions(maximumNumbers: maximumNumbers));
-
             var exception = Record.Exception(() => math.ValidateNumbers(numbers));
             Assert.IsType<Calc.MaximumNumberExeption>(exception);
         }

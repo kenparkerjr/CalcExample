@@ -30,7 +30,9 @@ namespace CalcCLI
 
             callingMethod = new StackTrace().GetFrame(1).GetMethod();
 
-            ConsoleWriter = new ConsoleWriter(callingMethod);
+            ConsoleWriter = new ConsoleWriter(new UsageProvider(callingMethod));
+
+
             ConsoleWriter.WriteUsage();
             ConsoleWriter.WriteAllArguments(ArgumentReader);
 
